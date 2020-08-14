@@ -1,0 +1,72 @@
+<style>
+
+.toolbarCabecalho {
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    text-align: center;
+    background-color: grey;
+    color: white;
+    font-weight: 600;
+
+  }
+
+  .toolbarCorpo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    text-align: center;
+    background-color: silver;
+    color: white;
+    font-weight: 600;
+  }
+
+    .card {
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    height: 40px;
+    width: 200px;
+    margin: 0 8px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+  }
+
+
+
+
+</style>
+
+<div class="toolbarCorpo" >
+    <div class="toolbarCabecalho" >
+
+      <h2>COPA</h2>
+      <h1>Fase de Seleção</h1>
+      _______________________
+      <h3>Selecione 8 equipes que você deseja para a competição e depois pressione o botão GERAR COPA para prosseguir</h3>
+
+    </div>
+    <br>
+    <br>
+
+    <div>
+
+
+      <span><h2>Selecionados</h2></span>
+
+      <button class="card"  (click)="funcao()"> </button>
+
+
+    </div>
+
+
+
+  </div>
