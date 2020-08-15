@@ -10,10 +10,5 @@ export class AppComponent {
 
 
   constructor() {
-    console.log('construtor')
-  }
-
-  funcao(){
-    console.log('funcao')
   }
 }

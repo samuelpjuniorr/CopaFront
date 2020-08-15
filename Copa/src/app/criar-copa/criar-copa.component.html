@@ -24,20 +24,14 @@
     font-weight: 600;
   }
 
-    .card {
-    border-radius: 4px;
-    border: 1px solid #eee;
-    background-color: #fafafa;
+    .buttom {
     height: 40px;
     width: 200px;
-    margin: 0 8px 16px;
-    padding: 16px;
-    display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    transition: all 0.2s ease-in-out;
     line-height: 24px;
+    background-color: grey;
+    color: white;
   }
 
 
@@ -46,7 +40,7 @@
 </style>
 
 <div class="toolbarCorpo" >
-    <div class="toolbarCabecalho" >
+    <div *ngIf="!exibirResultado" class="toolbarCabecalho" >
 
       <h2>COPA</h2>
       <h1>Fase de Seleção</h1>
@@ -54,19 +48,39 @@
       <h3>Selecione 8 equipes que você deseja para a competição e depois pressione o botão GERAR COPA para prosseguir</h3>
 
     </div>
+    <div *ngIf="exibirResultado" class="toolbarCabecalho" >
+
+      <h2>COPA</h2>
+          <h1>Resultado Final</h1>
+          _______________________
+          <h3>Veja o resultado final da Copa de forma simples e rápida</h3>
+
+    </div>
     <br>
     <br>
 
-    <div>
+    <div  *ngIf="!exibirResultado">
 
+      <span><h2>Selecionados {{countSelecioandas}} de 8 equipes</h2></span>
 
-      <span><h2>Selecionados</h2></span>
-
-      <button class="card"  (click)="funcao()"> </button>
-
+      <button class="buttom" (click)="gerarCopa()">Gerar Copa</button>
+      <mat-selection-list >
+        <mat-list-option (click)="selecionarEquipe(equipe)" *ngFor="let equipe of listaEquipes">
+            <button *ngIf="!equipe.selecionada" > {{equipe.nome}} - {{equipe.sigla}}</button>
+            <button *ngIf="equipe.selecionada" style="background-color:rgb(10, 163, 18); color: honeydew;"  > {{equipe.nome}} - {{equipe.sigla}}</button>
+        </mat-list-option>
+      </mat-selection-list>
 
     </div>
 
+    <div  *ngIf="exibirResultado">
+      <button class="buttom" (click)="criarNovaCopa()">Criar nova Copa</button>
+      <br>
+      <br>
+      <h1>1º - {{resultadoCopa.jogoFinal.vencedor.nome}}</h1>
+      <h1 *ngIf='resultadoCopa.jogoFinal.vencedor.id != resultadoCopa.jogoFinal.equipe1.id'>2º - {{resultadoCopa.jogoFinal.equipe1.nome}}</h1>
+      <h1 *ngIf='resultadoCopa.jogoFinal.vencedor.id != resultadoCopa.jogoFinal.equipe2.id'>2º - {{resultadoCopa.jogoFinal.equipe2.nome}}</h1>
 
+    </div>
 
   </div>
